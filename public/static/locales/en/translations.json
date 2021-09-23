@@ -14,8 +14,16 @@
   "Forbidden": "Not allowed to see this page!",
   "NavBar": {
     "MyFirstMenu": "My First Menu",
-    "Dashboard": "Dashboard",
-    "Settings": "Settings"
+    "Welcome": "Welcome",
+    "Settings": "Settings",
+    "ConferenceList": "Conference list"
+  },
+  "Text":{
+    "Title": "Welcome",
+    "Subtitle": "Please enter your email: ",
+    "Bad Email": "This is not a valid email",
+    "User": "User"
+
   },
   "Tooltips": {
     "Logout": "Logout",
@@ -51,5 +59,23 @@
       "MinCharacters": "The length must be greater than {{min}}",
       "Unique": "The value of {{selector}} must be unique"
     }
-  }
+  },
+  "Conferences":{
+    "Filters":{
+      "StartDate": "Start date",
+      "EndDate": "End date"
+    },
+    "Speaker": "Speaker:",
+    "Attend": "Attend",
+    "Join": "Join",
+    "Withdraw": "Withdraw",
+    "StatusNotSet": "Not attending"
+  },
+    "General": {
+      "Buttons": {
+        "ApplyFilters": "Apply filters",
+        "ResetFilters": "Reset filters"
+      }
+    }
+
 }
