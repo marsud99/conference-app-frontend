@@ -16,7 +16,8 @@
     "MyFirstMenu": "My First Menu",
     "Welcome": "Welcome",
     "Settings": "Settings",
-    "ConferenceList": "Conference list"
+    "Conferences": "Conference list",
+    "MyConferences": "My Conferences"
   },
   "Text":{
     "Title": "Welcome",
@@ -71,11 +72,44 @@
     "Withdraw": "Withdraw",
     "StatusNotSet": "Not attending"
   },
+  "MyConferences":{
+    "Edit" : "Editeaza",
+    "Delete": "Sterge"
+  },
     "General": {
       "Buttons": {
         "ApplyFilters": "Apply filters",
-        "ResetFilters": "Reset filters"
+        "ResetFilters": "Reset filters",
+        "AddConference": "Add conference",
+        "AddSpeaker": "Add speaker",
+        "Save": "Save",
+        "DeleteSpeaker":"Delete Speaker"
       }
+    },
+    "Conference": {
+      "Info": "Conference info",
+      "Location": "Location",
+      "Speakers": "Speakers",
+      "Name": "Conference name",
+      "StartDate": "Start date",
+      "EndDate": "End date",
+      "Type": "Conference type",
+      "Category": "Category"
+    },
+    "Location": {
+      "Name": "Name",
+      "Address": "Address",
+      "Country": "Country",
+      "County": "County",
+      "City": "City",
+      "Latitude": "Latitude",
+      "Longitude": "Longitude"
+    },
+    "Speaker": {
+      "Name": "Name",
+      "Nationality": "Nationality",
+      "Rating": "Rating",
+      "MainSpeaker": "Main Speaker"
     }
 
 }
