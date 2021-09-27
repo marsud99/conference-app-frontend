@@ -7,7 +7,7 @@ import { Table, Thead, Tbody, Tr, Th } from 'react-super-responsive-table';
 import { useTranslation } from 'react-i18next'
 import MyConferenceSpeakerData from './MyConferenceSpeakerData'
 const MyConferenceSpeakers = (props) => {
-    const {speakers} = props
+    const {speakers,dispatch} = props
     const {t} = useTranslation()
     const useStyles = makeStyles(tableStyles)
     const classes = useStyles()
@@ -25,7 +25,7 @@ const MyConferenceSpeakers = (props) => {
                 </Thead>
                 <Tbody>
                 {speakers?.map((speaker)=>(
-                  <MyConferenceSpeakerData key={speaker?.id} speaker={speaker} />
+                  <MyConferenceSpeakerData key={speaker.id} speaker={speaker} dispatch={dispatch}/>
               ))}
                 </Tbody>
             </Table>
@@ -35,6 +35,7 @@ const MyConferenceSpeakers = (props) => {
 
 MyConferenceSpeakers.propTypes = {
     speakers: PropTypes.array,
+    dispatch: PropTypes.func.isRequired
 }
 
 MyConferenceSpeakers.defaultProps = {

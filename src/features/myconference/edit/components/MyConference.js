@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Info, LocationOn, Face } from '@material-ui/icons'
@@ -9,8 +9,12 @@ import MyConferenceLocation from './MyConferenceLocation';
 import MyConferenceSpeakers from './MyConferenceSpeakers';
 import AddButton from '@bit/totalsoft_oss.react-mui.add-button'
 const MyConference = (props) => {
-    const { types, categories, countries, counties, cities } = props
+    const { types, categories, countries, counties, cities, conference,dispatch } = props
     const { t } = useTranslation()
+    const {location,speakers} = conference
+    const handleAddButton = useCallback(() => dispatch({ type: 'addSpeaker' }), [dispatch])
+
+    
 
     return <>
         <IconCard
@@ -19,7 +23,7 @@ const MyConference = (props) => {
             content={
                 <MyConferenceInfo
                     types={types}
-                    categories={categories}
+                    categories={categories} conference={conference} dispatch={dispatch}
                 />
             }
         />
@@ -31,6 +35,8 @@ const MyConference = (props) => {
                     countries={countries}
                     counties={counties}
                     cities={cities}
+                    location={location}
+                    dispatch={dispatch}
                 />
             }
         />
@@ -39,11 +45,11 @@ const MyConference = (props) => {
             title={
                 <CardTitle
                     title={t("Conference.Speakers")}
-                    actions={[<AddButton key='addButton' title={t("General.Buttons.AddSpeaker")} />]}
+                    actions={[<AddButton key='addButton' title={t("General.Buttons.AddSpeaker")} onClick = {handleAddButton}/>]}
                 />
             }
             content={
-                <MyConferenceSpeakers
+                <MyConferenceSpeakers speakers = {speakers} dispatch = {dispatch}
                 />
             }
         />
@@ -55,7 +61,9 @@ MyConference.propTypes={
     categories: PropTypes.array,
     countries: PropTypes.array,
     counties: PropTypes.array,
-    cities: PropTypes.array
+    cities: PropTypes.array,
+    conference:PropTypes.object,
+    dispatch:PropTypes.func
 }
 
 

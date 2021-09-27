@@ -1,15 +1,17 @@
 import { useHeader } from 'providers/AreasProvider'
-import React, { useEffect } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import { useTranslation } from 'react-i18next'
 import MyConferenceHeader from 'features/myconference/list/components/MyConferenceHeader'
 import SaveButton from '@bit/totalsoft_oss.react-mui.save-button'
 import { counties, types,categories,countries,cities } from 'utils/mocks/conferenceDictionaries'
 import LoadingFakeText from '@bit/totalsoft_oss.react-mui.fake-text/dist/LoadingFakeText'
 import MyConference from 'features/myconference/edit/components/MyConference'
+import { reducer, initialConference } from '../conferenceState'
 
 const MyConferenceContainer = () => {
     const {t} = useTranslation()
     const [,setHeader] = useHeader()
+    const [conference, dispatch] = useReducer(reducer, initialConference)
     
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => setHeader(null),[]) 
@@ -26,6 +28,8 @@ const MyConferenceContainer = () => {
         return <LoadingFakeText lines={10} />
     }
     return <MyConference
+    conference={conference}
+    dispatch={dispatch}
     types={data?.typeList}
     categories={data?.categoryList}
     countries={data?.countryList}
