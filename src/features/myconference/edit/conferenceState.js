@@ -57,12 +57,14 @@ export const reducer = (state, action) => {
                             speakers:state.speakers.map(s=>(s.id === action.payload.id ? {...s,name:action.payload.name}:s))
                         }
                         case 'nationality':
-                            case 'rating':
-                            case 'isMainSpeaker':
+                        case 'rating':
+                        case 'isMainSpeaker':
                                 return {
                                     ...state,
                                     speakers:state.speakers.map(s=>(s.id ===action.payload.id ? {...s,...action.payload}:s))
                                 }
+                        case 'resetData':
+                                return { deletedSpeakers: emptyArray, ...action.payload }
         default:
             return state
     }

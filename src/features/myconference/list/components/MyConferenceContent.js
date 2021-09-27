@@ -1,19 +1,22 @@
-import React from 'react'
+import React, { useCallback } from 'react'
 import attendeeStatus from 'constants/attendeeStatus'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Typography,Grid } from '@material-ui/core'
 import Button from '@bit/totalsoft_oss.react-mui.button'
+import { useHistory } from 'react-router'
 
 const MyConferenceContent = (props) =>{
     
     const {conference} = props
-    const {status,startDate,endDate,type,category} = conference
+    const {status,startDate,endDate,type,category,id} = conference
     const {t} = useTranslation()
     const noStatusSet = t('Conferences.StatusNotSet')
     const showJoin = status.id === attendeeStatus.Attended
     const showWithdraw = status.id === attendeeStatus.Attended || status.id === attendeeStatus.Joined
     const showAttend = status.id === attendeeStatus.Withdrawn
+    const history = useHistory()
+    const handleEditClick = useCallback(()=>history.push(`/myConferences/${id}`),[history,id])
     const startDateFormatted = t('DATE_FORMAT',{date: {value:startDate,format:'DD-MM-YYYY HH:mm'}})
     const endDateFormatted = t('DATE_FORMAT',{date: {value:endDate,format:'DD-MM-YYYY HH:mm'}})
 
@@ -33,7 +36,7 @@ return (
     <Grid container spacing = {2}>
     <Grid item xs = {12}> 
     <Button right size='sm' color='danger'>{t('MyConferences.Delete')}</Button>
-    <Button right size='sm' color='info'>{t('MyConferences.Edit')}</Button>
+    <Button right size='sm' color='info' onClick={handleEditClick}>{t('MyConferences.Edit')}</Button>
     </Grid>
 </Grid>
 </Grid>

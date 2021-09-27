@@ -7,16 +7,27 @@ import { counties, types,categories,countries,cities } from 'utils/mocks/confere
 import LoadingFakeText from '@bit/totalsoft_oss.react-mui.fake-text/dist/LoadingFakeText'
 import MyConference from 'features/myconference/edit/components/MyConference'
 import { reducer, initialConference } from '../conferenceState'
+import { conference as serverConference } from 'utils/mocks/myConference';
+import { useRouteMatch } from 'react-router'
+
 
 const MyConferenceContainer = () => {
     const {t} = useTranslation()
     const [,setHeader] = useHeader()
     const [conference, dispatch] = useReducer(reducer, initialConference)
+    const match = useRouteMatch();
+    const conferenceId = match.params.id;
+    const isNew = conferenceId === 'new';
+    useEffect(() => {
+        if (!isNew) {
+            dispatch({ type: 'resetData', payload: serverConference })
+        }
+    }, []) // eslint-disable-line react-hooks/exhaustive-deps
     
     // eslint-disable-next-line react-hooks/exhaustive-deps
     useEffect(() => setHeader(null),[]) 
-    useEffect(()=> {setHeader(<MyConferenceHeader actions ={<SaveButton title = {t('General.Buttons.Save')}/>}/>)},
-    [setHeader,t])
+    useEffect(()=> {setHeader(<MyConferenceHeader title={conference.name} actions ={<SaveButton title = {t('General.Buttons.Save')}/>}/>)},
+    [conference.name, setHeader, t])
     const {loading,data} = {loading: false, data: {
         typeList: types,
         categoryList: categories,

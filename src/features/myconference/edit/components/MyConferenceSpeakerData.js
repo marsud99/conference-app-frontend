@@ -25,7 +25,7 @@ const handleGeneralDispatch = (type,prop) => value => dispatch({type,payload:{id
     <Td className={classes.tableContent}><CustomTextField fullWidth value = {name} onChange = {handleNameChange}/></Td>
     <Td className={classes.tableContent}><CustomTextField fullWidth value = {nationality} onChange = {onTextBoxChange(handleGeneralDispatch('nationality','nationality'))}/></Td>
     <Td className={classes.tableContent}><CustomTextField isNumeric fullWidth value = {rating} onChange = {handleGeneralDispatch('rating','rating')}/></Td>
-    <Td className={classes.tableContent}><Checkbox color = 'secondary'value = {isMainSpeaker} onChange = {onCheckBoxChange(handleGeneralDispatch('isMainSpeaker','isMainSpeaker'))}/></Td>
+    <Td className={classes.tableContent}><Checkbox color = 'secondary'checked = {isMainSpeaker} onChange = {onCheckBoxChange(handleGeneralDispatch('isMainSpeaker','isMainSpeaker'))}/></Td>
     <Td className={classes.tableContent}><DeleteButton size='small' title={t('General.Buttons.DeleteSpeaker')} onClick = {handleDelete}/>
 </Td>
 
