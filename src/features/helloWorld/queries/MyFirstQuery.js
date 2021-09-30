@@ -5,3 +5,4 @@ query myFirstQuery {
     myFirstEndpoint
 }
 `
+

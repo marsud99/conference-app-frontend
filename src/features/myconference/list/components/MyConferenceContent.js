@@ -9,12 +9,9 @@ import { useHistory } from 'react-router'
 const MyConferenceContent = (props) =>{
     
     const {conference} = props
-    const {status,startDate,endDate,type,category,id} = conference
+    const {startDate,endDate,type,category,id} = conference
     const {t} = useTranslation()
-    const noStatusSet = t('Conferences.StatusNotSet')
-    const showJoin = status.id === attendeeStatus.Attended
-    const showWithdraw = status.id === attendeeStatus.Attended || status.id === attendeeStatus.Joined
-    const showAttend = status.id === attendeeStatus.Withdrawn
+
     const history = useHistory()
     const handleEditClick = useCallback(()=>history.push(`/myConferences/${id}`),[history,id])
     const startDateFormatted = t('DATE_FORMAT',{date: {value:startDate,format:'DD-MM-YYYY HH:mm'}})

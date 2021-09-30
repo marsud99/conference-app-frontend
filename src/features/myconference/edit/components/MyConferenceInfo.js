@@ -1,4 +1,4 @@
-import React, { useCallback } from 'react'
+import React from 'react'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import CustomTextField from '@bit/totalsoft_oss.react-mui.custom-text-field'
@@ -9,7 +9,7 @@ import { onTextBoxChange } from 'utils/propertyChangeAdapters'
 const MyConferenceInfo = (props) => {
 const {types,categories,conference,dispatch} = props
 const {t} = useTranslation()
-const {name, startDate,endDate , type, category,location} = conference
+const {name, startDate,endDate , type, category} = conference
 const handleChange = type => value => dispatch({type:type,payload:value})
 
 return (
