@@ -47,7 +47,7 @@ function Welcome() {
         onKeyDown = {handleKeyDown} 
         helperText= {!isValid && t('Text.Bad Email')} error={!isValid}
         endAdornment = {<InputAdornment position="end">
-            <IconButton size="small" color="theme" aria-labels="go" onClick = {handleButtonClick} ><KeyboardReturnIcon fontSize="small"/></IconButton>
+            <IconButton size="small" color="theme" aria-label="go" onClick = {handleButtonClick} ><KeyboardReturnIcon fontSize="small"/></IconButton>
           </InputAdornment>}>
       </CustomTextField>
      </Grid>
