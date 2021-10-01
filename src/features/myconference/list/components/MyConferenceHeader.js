@@ -9,11 +9,11 @@ const useStyles = makeStyles((theme) => ({ title: { ...theme.header.title, width
 const MyConferenceHeader = (props) =>{
     const {title,actions} = props
     const classes = useStyles()
-    return <Grid container justify='flex-start' alignItems='center' >
-        <Grid item xs = {6} sm = {9} lg ={9} container justify = 'flex-start'>
+    return <Grid container justifyContent='flex-start' alignItems='center' >
+        <Grid item xs = {6} sm = {9} lg ={9} container justifyContent = 'flex-start'>
             <Typography variant = 'subtitle1' className = {classes.title}>{title || emptyString}</Typography>
         </Grid>
-        <Grid item xs = {3} sm = {3} lg = {3} container justify = 'flex-end' spacing = {1}>
+        <Grid item xs = {3} sm = {3} lg = {3} container justifyContent = 'flex-end' spacing = {1}>
         {actions}
         </Grid>
     </Grid>
