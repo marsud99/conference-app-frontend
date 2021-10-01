@@ -1,5 +1,4 @@
 import React, { useCallback } from 'react'
-import attendeeStatus from 'constants/attendeeStatus'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Typography,Grid } from '@material-ui/core'

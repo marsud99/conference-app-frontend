@@ -63,7 +63,7 @@ export const reducer = (state, action) => {
                                     ...state,
                                     speakers:state.speakers.map(s=>(s.id ===action.payload.id ? {...s,...action.payload}:s))
                                 }
-                        case 'resetData':
+                        case 'resetConference':
                                 return { deletedSpeakers: emptyArray, ...action.payload }
         default:
             return state

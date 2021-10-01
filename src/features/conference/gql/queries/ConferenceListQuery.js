@@ -4,14 +4,13 @@ import Fragments from './fragments'
 export const CONFERENCE_LIST_QUERY = gql`
   query conferenceList($pager: PagerInput!, $filters: ConferenceFilterInput, $email: String!) {
     conferenceList(pager: $pager, filters: $filters) {
-        
-        pagination(pager: $pager, filters: $filters) {
-            currentPage {
-                page
-                pageSize
-            }
-            totalCount
+      pagination(pager: $pager, filters: $filters) {
+        currentPage {
+          page
+          pageSize
         }
+        totalCount
+      }
 
       values {
         ...conference
