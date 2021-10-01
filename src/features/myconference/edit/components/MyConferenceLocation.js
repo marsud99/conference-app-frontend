@@ -35,7 +35,6 @@ const MyConferenceLocation = (props) => {
                     createdLabel='Location.Country'
                     fullWidth
                     isClearable
-                    isSearchable
                     creatable
                     options={countries}
                     value = {country}
@@ -48,7 +47,6 @@ const MyConferenceLocation = (props) => {
                     createdLabel='Location.County'
                     fullWidth
                     isClearable
-                    isSearchable
                     creatable
                     options={counties}
                     value = {county}
@@ -61,7 +59,6 @@ const MyConferenceLocation = (props) => {
                     createdLabel='Location.City'
                     fullWidth
                     isClearable
-                    isSearchable
                     creatable
                     options={cities}
                     value = {city}
