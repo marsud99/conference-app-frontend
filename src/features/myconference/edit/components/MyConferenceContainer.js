@@ -19,7 +19,7 @@ const MyConferenceContainer = () => {
   const isNew = conferenceId === 'new'
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => setHeader(null), [])
+  useEffect(() =>()=> setHeader(null), [])
   useEffect(() => {
     setHeader(<MyConferenceHeader title={conference.name} actions={<SaveButton title={t('General.Buttons.Save')} />} />)
   }, [conference.name, setHeader, t])
