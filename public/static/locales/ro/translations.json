@@ -63,13 +63,17 @@
     "Join": "Inscrie-te",
     "Withdraw": "Retrage-te",
     "StatusNotSet": "Nu participi",
+    "Withdrawn":"Retras",
+    "Attended":"Participi",
+    "SavingSucceeded":"Salvare cu success",
     "SuccessfullyWithdrawn":"Te-ai retras cu success!",
     "SuccessfullyAttended":"Felicitari! Te-ai inscris cu succes la conferinta! Vei fi notificat cu 5 minute inainte sa inceapa.",
     "QRCodeMessage":"Te-ai inscris cu succes la conferinta! Vei fi notificat cu 5 minute inainte sa inceapa. Foloseste urmatorul cod pentru a accesa conferinta: {{code}}"
   },
   "MyConferences":{
-    "Edit" : "Edit",
-    "Delete": "Delete"
+    "Edit" : "Editeaza",
+    "Delete": "Sterge",
+    "SavingSucceeded":"Conference was successfully saved"
   },
   "General": {
     "Congratulations":"Felicitari!",

@@ -21,7 +21,7 @@ return (
 <Grid container>
     <Grid item>
         <Typography variant='subtitle1' color= 'error'> 
-        {status?.name || noStatusSet}
+        {status?.name|| noStatusSet}
         
         </Typography>
     </Grid>
@@ -35,7 +35,7 @@ return (
     <Grid item xs = {12}> 
     {showJoin &&  <Button right color = 'success' size = 'sm' >{t('Conferences.Join')} </Button> }
     {showWithdraw && <Button right color="danger" size={"sm"} onClick = {onWithdraw(conference?.id)}>{t('Conferences.Withdraw')}</Button>}
-    {showAttend && <Button right color="info" size={"sm"} onClick = {onAttend(conference?.id)} ></Button>}
+    {showAttend && <Button right color="info" size={"sm"} onClick = {onAttend(conference?.id)} >{t('Conferences.Attend')}</Button>}
 
     </Grid>
 </Grid>
