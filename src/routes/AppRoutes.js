@@ -12,6 +12,8 @@ import ConferenceListContainer from 'features/conference/components/ConferenceLi
 import MyConferenceListContainer from 'features/myconference/list/components/MyConferenceListContainer'
 import { useEmail } from 'hooks/useEmail'
 import MyConferenceContainer from 'features/myconference/edit/components/MyConferenceContainer'
+import ConferenceJoin from 'features/conference/components/ConferenceJoin'
+
 export default function AppRoutes() {
   const [email]=useEmail()
   if(!email){
@@ -22,6 +24,7 @@ export default function AppRoutes() {
   }
   return (
     <Switch>
+      <CustomRoute isPrivate={false} exact path='/joinedConference/:id(\d+)' component={ConferenceJoin} />
       <CustomRoute isPrivate={false} exact path='/conference' component={ConferenceListContainer} />
       <CustomRoute isPrivate={false} exact path='/myconference' component={MyConferenceListContainer} />
       <CustomRoute isPrivate={false} exact path='/myconferences/:id(new)' component={MyConferenceContainer} />

@@ -12,11 +12,13 @@ import Pagination from '@bit/totalsoft_oss.react-mui.pagination'
 import { useMutation } from '@apollo/client'
 import ATTEND_CONFERENCE from 'features/conference/gql/mutations/AttendConference'
 import WITHDRAW_CONFERENCE from 'features/conference/gql/mutations/WithdrawConference'
+import JOIN_CONFERENCE from 'features/conference/gql/mutations/JoinConference'
 import DialogDisplay from '@bit/totalsoft_oss.react-mui.dialog-display'
 import ConferenceCodeModal from './ConferenceCodeModal'
 import {useToast} from '@bit/totalsoft_oss.react-mui.kit.core'
 import { useTranslation } from 'react-i18next'
 import { emptyArray, emptyString } from 'utils/constants'
+import { useHistory} from 'react-router'
 
 function ConferenceListContainer() {
   const addToast = useToast()
@@ -28,7 +30,7 @@ function ConferenceListContainer() {
   const [email] = useEmail()
   const [, setFooter] = useFooter()
   const [suggestedConferences,setSuggestedConferences] =useState(emptyArray)
-
+  const history = useHistory()
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => () => setFooter(null), [])
   const { data, loading, refetch } = useQueryWithErrorHandling(CONFERENCE_LIST_QUERY, {
@@ -38,6 +40,9 @@ function ConferenceListContainer() {
       setPager(state => ({ ...state, totalCount }))
     }
   })
+
+
+  
   const showError = useError()
   const [attend] = useMutation(ATTEND_CONFERENCE,{
     onError: showError,
@@ -58,6 +63,26 @@ function ConferenceListContainer() {
     },
     onError: showError
 })
+
+const [join] = useMutation(JOIN_CONFERENCE, {
+  onCompleted: ()=> {
+      addToast(t("Conferences.SuccessfullyJoined"), 'success')
+      refetch()
+
+  },
+  onError: showError
+})
+const handleJoin = useCallback(conferenceId => () => {
+  join({
+      variables: {
+          input:{conferenceId,
+          attendeeEmail: email}
+      }
+    })
+    history.push(`/joinedConference/${conferenceId}`)
+    refetch()
+
+}, [history,join, email,refetch])
   const handleAttend = useCallback(conferenceId => () => {
     attend({
         variables: {
@@ -114,7 +139,7 @@ const handleWithdraw = useCallback(conferenceId => () => {
   return (
     <>
       <ConferenceFilters filters={filters} onApplyFilters={handleApplyFilters} />
-      <ConferenceList conferences={data?.conferenceList?.values} onAttend ={handleAttend} onWithdraw = {handleWithdraw}/>
+      <ConferenceList conferences={data?.conferenceList?.values} onAttend ={handleAttend} onWithdraw = {handleWithdraw} onJoin = {handleJoin}/>
       <DialogDisplay id = 'showQRCode' 
       open = {open} 
       onClose = {handleClose} 

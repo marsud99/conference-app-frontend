@@ -6,6 +6,7 @@ import qrCode from 'assets/img/qrCode.png'
 import ConferenceItem from './ConferenceItem'
 import { isEmpty } from 'ramda'
 
+
 const ConferenceCodeModal = ({ code, suggestedConferences ,onAttend,onWithdraw}) => {
   const { t } = useTranslation()
   return (
@@ -28,6 +29,7 @@ const ConferenceCodeModal = ({ code, suggestedConferences ,onAttend,onWithdraw})
           <Grid item key={conference?.id}>
             <ConferenceItem conference={conference} onAttend = {onAttend} onWithdraw = {onWithdraw}/>
           </Grid>
+          
         )}
       </Grid>
         )}

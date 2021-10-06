@@ -1,13 +1,15 @@
-import React from 'react'
+import React  from 'react'
 import attendeeStatus from 'constants/attendeeStatus'
 import PropTypes from 'prop-types'
 import { useTranslation } from 'react-i18next'
 import { Typography,Grid } from '@material-ui/core'
 import Button from '@bit/totalsoft_oss.react-mui.button'
 
+
+
 const ConferenceContent = (props) =>{
     
-    const {conference,onAttend,onWithdraw} = props
+    const {conference,onAttend,onWithdraw,onJoin} = props
     const {status,startDate,endDate,type,category} = conference
     const {t} = useTranslation()
     const noStatusSet = t('Conferences.StatusNotSet')
@@ -16,6 +18,8 @@ const ConferenceContent = (props) =>{
     const showAttend = status?.id === attendeeStatus.Withdrawn || !status
     const startDateFormatted = t('DATE_FORMAT',{date: {value:startDate,format:'DD-MM-YYYY HH:mm'}})
     const endDateFormatted = t('DATE_FORMAT',{date: {value:endDate,format:'DD-MM-YYYY HH:mm'}})
+    
+
 
 return (
 <Grid container>
@@ -33,7 +37,8 @@ return (
     </Grid>
     <Grid container spacing = {2}>
     <Grid item xs = {12}> 
-    {showJoin &&  <Button right color = 'success' size = 'sm' >{t('Conferences.Join')} </Button> }
+
+    {showJoin &&  <Button right color = 'success' size = 'sm' onClick = {onJoin(conference?.id)}>{t('Conferences.Join')} </Button> }
     {showWithdraw && <Button right color="danger" size={"sm"} onClick = {onWithdraw(conference?.id)}>{t('Conferences.Withdraw')}</Button>}
     {showAttend && <Button right color="info" size={"sm"} onClick = {onAttend(conference?.id)} >{t('Conferences.Attend')}</Button>}
 
@@ -48,6 +53,7 @@ return (
 ConferenceContent.propTypes = {
     conference: PropTypes.object.isRequired,
     onAttend:PropTypes.func.isRequired,
-    onWithdraw:PropTypes.func.isRequired
+    onWithdraw:PropTypes.func.isRequired,
+    onJoin:PropTypes.func.isRequired
 }
 export default ConferenceContent

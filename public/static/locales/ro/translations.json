@@ -67,6 +67,7 @@
     "Attended":"Participi",
     "SavingSucceeded":"Salvare cu success",
     "SuccessfullyWithdrawn":"Te-ai retras cu success!",
+    "SuccessfullyJoined":"Te-ai alaturat cu success!",
     "SuccessfullyAttended":"Felicitari! Te-ai inscris cu succes la conferinta! Vei fi notificat cu 5 minute inainte sa inceapa.",
     "QRCodeMessage":"Te-ai inscris cu succes la conferinta! Vei fi notificat cu 5 minute inainte sa inceapa. Foloseste urmatorul cod pentru a accesa conferinta: {{code}}"
   },
